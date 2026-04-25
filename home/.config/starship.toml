@@ -1,0 +1,153 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+add_newline = true
+command_timeout = 1000
+scan_timeout = 50
+
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$kubernetes\
+$aws\
+$gcloud\
+$azure\
+$python\
+$golang\
+$nodejs\
+$rust\
+$elixir\
+$erlang\
+$package\
+$cmd_duration\
+$line_break\
+$character\
+"""
+
+[character]
+success_symbol = "[λ](bold green)"
+error_symbol = "[λ](bold red)"
+
+[username]
+show_always = true
+style_user = "bold cyan"
+style_root = "bold red"
+format = "[$user]($style)@"
+
+[hostname]
+ssh_only = false
+style = "bold yellow"
+format = "[$hostname]($style) "
+
+[directory]
+style = "bold blue"
+format = "[$path]($style) "
+truncation_length = 3
+truncate_to_repo = false
+home_symbol = "~"
+read_only = " 󰌾"
+read_only_style = "red"
+
+[directory.substitutions]
+"~/src" = "src"
+"~/code" = "code"
+"~/projects" = "proj"
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "bold red"
+format = "([$all_status$ahead_behind]($style) )"
+
+[kubernetes]
+disabled = false
+symbol = "⎈ "
+style = "bold dimmed green"
+format = '[$symbol$context( \($namespace\))]($style) '
+
+[[kubernetes.contexts]]
+context_pattern = "arn:aws:eks:(?P<region>[a-z0-9-]+):[0-9]+:cluster/(?P<cluster>[A-Za-z0-9._-]+)"
+context_alias = "eks-$cluster"
+
+[[kubernetes.contexts]]
+context_pattern = "gke_.*_(?P<cluster>[\\w-]+)"
+context_alias = "gke-$cluster"
+
+[aws]
+style = "bold yellow"
+symbol = "☁️ "
+format = '[$symbol$profile( \($region\))( \[$duration\])]($style) '
+# Optional aliases
+[aws.region_aliases]
+us-east-1 = "ue1"
+us-east-2 = "ue2"
+us-west-1 = "uw1"
+us-west-2 = "uw2"
+
+[gcloud]
+style = "bold blue"
+symbol = "☁️ "
+format = '[$symbol$account(@$domain)( \($project\))( \($region\))]($style) '
+# This keeps gcloud from showing all the time unless these env vars exist.
+# Remove detect_env_vars if you want the current gcloud config to always show.
+detect_env_vars = [
+  "CLOUDSDK_CONFIG",
+  "CLOUDSDK_ACTIVE_CONFIG_NAME",
+  "GOOGLE_CLOUD_PROJECT",
+  "GCLOUD_PROJECT"
+]
+
+[azure]
+disabled = false
+style = "blue bold"
+symbol = "󰠅 "
+format = '[$symbol($subscription)]($style) '
+# Optional aliases
+[azure.subscription_aliases]
+"Production Subscription" = "prod"
+"Development Subscription" = "dev"
+
+[python]
+symbol = "🐍 "
+style = "yellow"
+format = '[${symbol}${pyenv_prefix}(${version})( \($virtualenv\))]($style) '
+
+[golang]
+symbol = " "
+style = "bold cyan"
+format = "[$symbol($version )]($style)"
+
+[nodejs]
+symbol = " "
+style = "bold green"
+format = "[$symbol($version )]($style)"
+
+[rust]
+symbol = "🦀 "
+style = "bold red"
+format = "[$symbol($version )]($style)"
+
+[elixir]
+symbol = "💧 "
+style = "bold magenta"
+format = '[$symbol$version \(OTP $otp_version\)]($style) '
+
+[erlang]
+symbol = " "
+style = "bold red"
+format = '[$symbol$version]($style) '
+
+[package]
+symbol = "📦 "
+style = "208"
+format = "[$symbol$version]($style) "
+
+[cmd_duration]
+min_time = 500
+format = "[took $duration](dimmed white) "
+

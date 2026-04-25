@@ -1,0 +1,70 @@
+[user]
+	name = Allen Gooch
+	email = allen.gooch@gmail.com
+
+[core]
+	editor = emacsclient -c
+	excludesfile = ~/.gitignore
+	pager = delta
+	autocrlf = input
+
+[delta]
+    navigate = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+[push]
+	autoSetupRemote = true
+
+[alias]
+	clog = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	log = log --color
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	# Long but worth it, gives you output like:
+	# * 4be77ea  Add issue 42. 4 weeks ago by Julien
+	lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen%ar%Creset by %C(yellow)%an%Creset' --abbrev-commit
+	# Convenient to see diff in minified files
+	dw = diff --color-words
+	# Display all branches and last commits on them
+	wip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
+	# Compare two branches for differences in commits between them.
+	cmp = log --left-right --graph --cherry-pick --oneline
+	dunk = !git diff | dunk
+
+# Add colors
+[color]
+	ui = true
+	diff = auto
+
+# Avoid messy merge commits with autorebase
+[branch]
+	autosetuprebase = always
+
+[push]
+	default = current
+
+[help]
+	autocorrect = 1
+
+[merge]
+	conflictStyle = zdiff3
+
+[init]
+	templatedir = ~/.git-templates
+	defaultBranch = main
+
+[rerere]
+	enabled = true
+
+[magit]
+	hideCampaign = true
+
+[diff "sopsdiffer"]
+	textconv = sops -d
+
+[url "ssh://git@bitbucket.org/"]
+	insteadOf = https://bitbucket.org
