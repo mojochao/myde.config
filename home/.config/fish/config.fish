@@ -175,3 +175,5 @@ set local_config_fish $HOME/.config/fish/local.config.fish
 if test -f $local_config_fish
     source $local_config_fish
 end
+
+string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
