@@ -1,0 +1,5 @@
+font-family = "Source Code Pro"
+font-style = "Regular"
+font-size = 12
+quit-after-last-window-closed = true
+theme = "dark:Catppuccin Mocha,light:Catppuccin Latte"
