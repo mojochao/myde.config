@@ -55,11 +55,11 @@ if status is-interactive
     set fish_greeting ''
 
     # Set emacs as my default text editor.
-    set -gx EDITOR 'emacsclient -cq -nw'
-    set -gx VISUAL 'emacsclient -cq'
+    set -gx EDITOR 'emacsclient -cq -nw' # TUI
+    set -gx VISUAL 'emacsclient -cq' # GUI
 
-    alias e $VISUAL
-    alias et $EDITOR
+    alias et $EDITOR # TUI
+    alias eg $VISUAL # GUI
 
     # Use starship for portable shell prompt.
     # docs: https://starship.rs/
