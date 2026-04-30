@@ -80,9 +80,15 @@ if status is-interactive
         alias repos repos-cli
     end
 
+    # Keep git nice and short but still provide completions.
     if command -q git
         alias g git
         complete -c g -w git
+    end
+
+    # Integrate with shell in terminals
+    if command -q kiro
+        string match -q "$TERM_PROGRAM" kiro and . (kiro --locate-shell-integration-path fish)
     end
 
     # Bookmark directories with bookmarks.fish plugin.
@@ -175,5 +181,3 @@ set local_config_fish $HOME/.config/fish/local.config.fish
 if test -f $local_config_fish
     source $local_config_fish
 end
-
-string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
