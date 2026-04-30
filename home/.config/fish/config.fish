@@ -1,26 +1,48 @@
 # Commands to run in all sessions
 
 ## Add user-local bin paths
+
+## user binaries
 set home_bin_dir $HOME/bin
 if test -d $home_bin_dir
     fish_add_path $home_bin_dir
 end
 
-set cargo_bin_dir $HOME/.cargo/env.fish
-if test -f $cargo_bin_dir
-    source $cargo_bin_dir
-end
-
+## golang binaries installed with `go install`
 set go_bin_dir $HOME/go/bin
 if test -d $go_bin_dir
     fish_add_path $go_bin_dir
 end
 
+## rustlang binaries installed with `cargo install`
+set cargo_bin_dir $HOME/.cargo/env.fish
+if test -f $cargo_bin_dir
+    source $cargo_bin_dir
+end
+
+## brew-installed ruby binaries installed with `brew install ruby`
+if command -q brew
+    set ruby_bin_dir (brew --prefix ruby)/bin
+    if test -d $ruby_bin_dir
+        fish_add_path $ruby_bin_dir
+    end
+end
+
+## gem-installed ruby binaries installed with `gem install`
+if command -q ruby
+    set gem_bin_dir (ruby -e 'puts Gem.user_dir')/bin
+    if test -d $gem_bin_dir
+        fish_add_path $gem_bin_dir
+    end
+end
+
+## krew plugin binaries installed with `kubectl krew install`
 set krew_bin_dir $HOME/.krew/bin
 if test -d $krew_bin_dir
     fish_add_path $krew_bin_dir
 end
 
+## jetbrains ides scripts installed by JetBrains Toolbox app
 set jetbrains_scripts_dir ~/.local/share/JetBrains/Toolbox/scripts
 if test -d $jetbrains_scripts_dir
     fish_add_path $jetbrains_scripts_dir
