@@ -108,11 +108,6 @@ if status is-interactive
         complete -c g -w git
     end
 
-    # Integrate with shell in terminals
-    if command -q kiro
-        string match -q "$TERM_PROGRAM" kiro and . (kiro --locate-shell-integration-path fish)
-    end
-
     # Bookmark directories with bookmarks.fish plugin.
     # repo: https://github.com/gregorias/bookmarks.fish
     alias bms 'bf save'
