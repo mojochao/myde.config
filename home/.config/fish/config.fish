@@ -8,6 +8,17 @@ if test -d $home_bin_dir
     fish_add_path $home_bin_dir
 end
 
+## homebrew binaries installed with `brew install`
+switch (uname)
+    case Linux
+        set brew_bin_dir /home/linuxbrew/.linuxbrew/bin
+    case Darwin
+        set brew_bin_dir /opt/linuxbrew/bin
+end
+if test -d $brew_bin_dir
+    fish_add_path $brew_bin_dir
+end
+
 ## golang binaries installed with `go install`
 set go_bin_dir $HOME/go/bin
 if test -d $go_bin_dir
@@ -19,6 +30,7 @@ set cargo_bin_dir $HOME/.cargo/env.fish
 if test -f $cargo_bin_dir
     source $cargo_bin_dir
 end
+
 
 ## brew-installed ruby binaries installed with `brew install ruby`
 if command -q brew
