@@ -31,7 +31,6 @@ if test -f $cargo_bin_dir
     source $cargo_bin_dir
 end
 
-
 ## brew-installed ruby binaries installed with `brew install ruby`
 if command -q brew
     set ruby_bin_dir (brew --prefix ruby)/bin
@@ -134,7 +133,13 @@ if status is-interactive
     alias ll 'ls -l'
     alias lla 'ls -la'
 
-    # Edit with emacs.
+    # List files in tree view.
+    alias t tree
+    alias ta 'tree -a'
+    alias td 'tree -L'
+    alias tad 'tree -a -L'
+
+    # Edit with Emacs.
     alias e emacsclient
     alias et 'emacsclient -nw'
 
