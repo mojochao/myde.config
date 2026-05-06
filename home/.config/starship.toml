@@ -5,6 +5,7 @@ command_timeout = 1000
 scan_timeout = 50
 
 format = """
+$shell\
 $username\
 $hostname\
 $directory\
@@ -23,7 +24,6 @@ $erlang\
 $package\
 $cmd_duration\
 $line_break\
-$shell\
 $character\
 """
 
