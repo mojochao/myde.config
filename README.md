@@ -9,6 +9,7 @@ defined in the [Makefile](Makefile).
 
 ``` text
 .
+├── .gitattributes
 ├── .gitignore
 ├── home/        # stow package of files to be symlinked under $HOME
 ├── Makefile     # project automation
