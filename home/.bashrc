@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-# PATH — mirrors fish config
+# XDG base dirs — Nushell on macOS only reads ~/.config/nushell when this is set.
+export XDG_CONFIG_HOME="$HOME/.config"
+
 [[ -d "$HOME/bin" ]] && PATH="$HOME/bin:$PATH"
 
 case "$(uname)" in
@@ -29,6 +31,9 @@ fi
 
 export PATH
 
+# Silence macOS "default shell is now zsh" banner
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # Interactive-only from here
 [[ $- == *i* ]] || return
 
@@ -36,7 +41,9 @@ export PATH
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
 # Shell options
-shopt -s histappend checkwinsize globstar nocaseglob
+shopt -s histappend checkwinsize nocaseglob
+# globstar requires bash 4+ (macOS ships 3.2)
+((BASH_VERSINFO[0] >= 4)) && shopt -s globstar
 
 export HISTCONTROL=ignoreboth:erasedups
 export HISTSIZE=10000
@@ -60,3 +67,6 @@ command -v starship &>/dev/null && eval "$(starship init bash)"
 
 # Local overrides
 [[ -f "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
+
+# Ensure clean exit status so Starship's first prompt isn't red
+true

@@ -1,9 +1,11 @@
 # Nushell environment — runs before config.nu.
 # Sets up PATH and generates vendor autoload files for external tool init.
 
+# Squelch startup banner (must be set in env.nu — banner displays before config.nu loads)
+$env.config = { show_banner: false }
+
 # --- PATH ----------------------------------------------------------------
 
-# Mirrors home/.config/fish/config.fish path setup.
 def --env add-path [dir: string] {
     let p = ($dir | path expand)
     if ($p | path exists) and ($p not-in $env.PATH) {

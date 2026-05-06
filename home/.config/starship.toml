@@ -23,6 +23,7 @@ $erlang\
 $package\
 $cmd_duration\
 $line_break\
+$shell\
 $character\
 """
 
@@ -150,4 +151,14 @@ format = "[$symbol$version]($style) "
 [cmd_duration]
 min_time = 500
 format = "[took $duration](dimmed white) "
+
+[shell]
+disabled = false
+style = "bold dimmed white"
+format = "[$indicator]($style) "
+bash_indicator = "bash"
+zsh_indicator = "zsh"
+fish_indicator = "fish"
+nu_indicator = "nu"
+unknown_indicator = "?"
 
