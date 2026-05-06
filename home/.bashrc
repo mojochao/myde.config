@@ -32,6 +32,9 @@ export PATH
 # Interactive-only from here
 [[ $- == *i* ]] || return
 
+# Shared aliases
+[[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
+
 # Shell options
 shopt -s histappend checkwinsize globstar nocaseglob
 

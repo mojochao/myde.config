@@ -73,51 +73,7 @@ fi
 
 # --- Aliases ------------------------------------------------------------------
 
-# Emacs
-alias e='emacsclient'
-alias et='emacsclient -nw'
-alias eg='emacsclient -cq'
-
-# Git
-alias g='git'
-
-# File viewer
-alias v='bat -p'
-
-# ls variants
-alias l='ls -1'
-alias la='ls -1a'
-alias ll='ls -l'
-alias lla='ls -la'
-
-# Tree variants
-alias t='tree'
-alias ta='tree -a'
-alias td='tree -L'
-alias tad='tree -a -L'
-
-# Directory bookmarks (bookmarks.fish / bf)
-alias bms='bf save'
-alias bmd='bf delete'
-alias bmg='bf go'
-alias bml='bf list'
-alias bmp='bf print'
-
-# OS open
-case $(uname) in
-    Linux)  alias o='xdg-open' ;;
-    Darwin) alias o='open' ;;
-esac
-
-# NPM/UVX wrappers
-alias mmdc='npx @mermaid-js/mermaid-cli'
-alias paperclipai='npx paperclipai'
-alias codeburn='npx codeburn'
-alias skilz='uvx skilz'
-alias smolvm='uvx smolvm'
-
-# repos-cli
-command -v repos-cli &>/dev/null && alias repos='repos-cli'
+[[ -f $HOME/.aliases ]] && source $HOME/.aliases
 
 # --- Local overrides ----------------------------------------------------------
 
