@@ -1,7 +1,7 @@
 # Commands to run in all sessions
 
-## XDG base dirs — Nushell on macOS only honors ~/.config/nushell when
-## XDG_CONFIG_HOME is set; harmless on Linux and for other XDG-aware tools.
+## Nushell on macOS only honors ~/.config/nushell when XDG_CONFIG_HOME is set.
+## This is harmless on Linux and for other XDG-aware tools.
 set -gx XDG_CONFIG_HOME $HOME/.config
 
 ## Add user-local bin paths
