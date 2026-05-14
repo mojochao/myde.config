@@ -57,7 +57,7 @@ if test -d $krew_bin_dir
     fish_add_path $krew_bin_dir
 end
 
-## jetbrains ides scripts installed by JetBrains Toolbox app
+## JetBrains IDE scripts installed by JetBrains Toolbox app
 set jetbrains_scripts_dir ~/.local/share/JetBrains/Toolbox/scripts
 if test -d $jetbrains_scripts_dir
     fish_add_path $jetbrains_scripts_dir
@@ -172,6 +172,10 @@ if status is-interactive
     # repo: https://github.com/paperclipai/paperclip
     alias paperclipai 'npx paperclipai'
 
+    # qmd is a local markdown documents search engine.
+    # repo: https://github.com/tobi/qmd
+    alias qmd 'npx @tobilu/qmd'
+
     # Monitor agent spend with codeburn.
     # repo: https://github.com/AgentSeal/codeburn
     alias codeburn 'npx codeburn'
@@ -197,12 +201,6 @@ if status is-interactive
     # # docs: https://skills.sh
     # # repo: https://github.com/vercel-labs/skills
     # alias skills 'npx skills'
-
-    # # Local RAG-ish tools
-
-    # # qmd is a local markdown documents search engine.
-    # # repo: https://github.com/tobi/qmd
-    # alias qmd 'npx @tobilu/qmd'
 
     # # Stacklit is a code indexer for AI use.
     # # docs: https://www.npmjs.com/package/stacklit
