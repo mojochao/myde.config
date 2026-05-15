@@ -65,6 +65,9 @@ command -v gk &>/dev/null && eval "$(gk completion bash 2>/dev/null)"
 # Starship prompt
 command -v starship &>/dev/null && eval "$(starship init bash)"
 
+# Shell history (atuin)
+command -v atuin &>/dev/null && eval "$(atuin init bash)"
+
 # Local overrides
 [[ -f "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
 

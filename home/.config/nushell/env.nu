@@ -76,3 +76,10 @@ if (which carapace | is-not-empty) {
         carapace _carapace nushell | save -f $f
     }
 }
+
+if (which atuin | is-not-empty) {
+    let f = ($autoload | path join "atuin.nu")
+    if not ($f | path exists) {
+        atuin init nu | save -f $f
+    }
+}

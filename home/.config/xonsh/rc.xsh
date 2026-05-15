@@ -4,3 +4,6 @@
 import shutil
 if shutil.which('starship'):
     execx($(starship init xonsh))
+
+if shutil.which('atuin'):
+    execx($(atuin init xonsh))

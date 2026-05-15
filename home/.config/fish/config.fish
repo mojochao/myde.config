@@ -106,6 +106,13 @@ if status is-interactive
         alias mr 'mise run'
     end
 
+    # Use atuin for shell history search.
+    # docs: https://atuin.sh/
+    # repo: https://github.com/atuinsh/atuin
+    if command -q atuin
+        atuin init fish | source
+    end
+
     # GitKraken CLI completion
     if command -q gk
         gk completion fish | source
