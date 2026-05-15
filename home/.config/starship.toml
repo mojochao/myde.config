@@ -160,5 +160,6 @@ bash_indicator = "bash"
 zsh_indicator = "zsh"
 fish_indicator = "fish"
 nu_indicator = "nu"
+xonsh_indicator = "xonsh"
 unknown_indicator = "?"
 
