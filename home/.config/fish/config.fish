@@ -130,6 +130,11 @@ if status is-interactive
         complete -c g -w git
     end
 
+    # Docker completion is super helpful.
+    if command -q docker
+        docker completion fish | source
+    end
+
     # Bookmark directories with bookmarks.fish plugin.
     # repo: https://github.com/gregorias/bookmarks.fish
     alias bms 'bf save'
