@@ -229,3 +229,7 @@ set local_config_fish $HOME/.config/fish/local.config.fish
 if test -f $local_config_fish
     source $local_config_fish
 end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
