@@ -85,3 +85,5 @@ fi
 
 [[ -f ${ZDOTDIR:-$HOME}/.config/zsh/local.zshrc ]] && \
     source ${ZDOTDIR:-$HOME}/.config/zsh/local.zshrc
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
