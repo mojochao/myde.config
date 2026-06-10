@@ -70,7 +70,7 @@ if status is-interactive
     set fish_greeting ''
 
     # Set emacs as my default text editor.
-    set -gx EDITOR 'emacsclient -cq -nw' # TUI
+    set -gx EDITOR 'TERM=xterm-256color emacsclient -cq -nw' # TUI
     set -gx VISUAL 'emacsclient -cq' # GUI
 
     alias et $EDITOR # TUI
