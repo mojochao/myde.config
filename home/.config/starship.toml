@@ -11,6 +11,8 @@ $hostname\
 $directory\
 $git_branch\
 $git_status\
+$cmd_duration\
+$line_break\
 $kubernetes\
 $aws\
 $gcloud\
@@ -22,7 +24,6 @@ $rust\
 $elixir\
 $erlang\
 $package\
-$cmd_duration\
 $line_break\
 $character\
 """
@@ -81,7 +82,7 @@ context_alias = "gke-$cluster"
 
 [aws]
 style = "bold yellow"
-symbol = "☁️ "
+symbol = "\U000F0E0F "
 format = '[$symbol$profile( \($region\))( \[$duration\])]($style) '
 # Optional aliases
 [aws.region_aliases]
