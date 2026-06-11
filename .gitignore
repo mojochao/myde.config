@@ -10,3 +10,5 @@
 *.temp
 tmp/
 
+# babysitter artifacts
+.a5c/
