@@ -13,6 +13,7 @@ unset _brew_prefix
 
 # User binaries
 [[ -d $HOME/bin ]] && path=($HOME/bin $path)
+[[ -d $HOME/.local/bin ]] && path=($HOME/.local/bin $path)
 
 # Go binaries installed with `go install`
 [[ -d $HOME/go/bin ]] && path=($HOME/go/bin $path)

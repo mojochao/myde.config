@@ -4,6 +4,7 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 
 [[ -d "$HOME/bin" ]] && PATH="$HOME/bin:$PATH"
+[[ -d "$HOME/.local/bin" ]] && PATH="$HOME/.local/bin:$PATH"
 
 case "$(uname)" in
     Linux)  [[ -d /home/linuxbrew/.linuxbrew/bin ]] && PATH="/home/linuxbrew/.linuxbrew/bin:$PATH" ;;

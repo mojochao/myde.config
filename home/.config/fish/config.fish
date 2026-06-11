@@ -12,6 +12,12 @@ if test -d $home_bin_dir
     fish_add_path $home_bin_dir
 end
 
+## user-local binaries (pip --user, pipx, etc.)
+set local_bin_dir $HOME/.local/bin
+if test -d $local_bin_dir
+    fish_add_path $local_bin_dir
+end
+
 ## homebrew binaries installed with `brew install`
 switch (uname)
     case Linux
