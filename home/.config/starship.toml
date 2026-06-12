@@ -85,11 +85,11 @@ style = "bold yellow"
 symbol = "\U000F0E0F "
 format = '[$symbol$profile( \($region\))( \[$duration\])]($style) '
 # Optional aliases
-[aws.region_aliases]
-us-east-1 = "ue1"
-us-east-2 = "ue2"
-us-west-1 = "uw1"
-us-west-2 = "uw2"
+# [aws.region_aliases]
+# us-east-1 = "ue1"
+# us-east-2 = "ue2"
+# us-west-1 = "uw1"
+# us-west-2 = "uw2"
 
 [gcloud]
 style = "bold blue"
@@ -101,7 +101,7 @@ detect_env_vars = [
   "CLOUDSDK_CONFIG",
   "CLOUDSDK_ACTIVE_CONFIG_NAME",
   "GOOGLE_CLOUD_PROJECT",
-  "GCLOUD_PROJECT"
+  "GCLOUD_PROJECT",
 ]
 
 [azure]
@@ -163,4 +163,3 @@ fish_indicator = "fish"
 nu_indicator = "nu"
 xonsh_indicator = "xonsh"
 unknown_indicator = "?"
-
