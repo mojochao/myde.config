@@ -203,6 +203,10 @@ if status is-interactive
     # repo: https://github.com/SpillwaveSolutions/skilz-cli
     alias skilz 'uvx skilz'
 
+    # Security scanner for agent skills
+    # repo: https://github.com/NVIDIA/skillspector.git
+    alias skillspector 'uvx https://github.com/NVIDIA/skillspector.git'
+
     # Run agents in isolated sandboxes with SmolVM
     # docs: https://mintlify.wiki/CelestoAI/SmolVM/introduction
     # repo: https://github.com/CelestoAI/SmolVM
