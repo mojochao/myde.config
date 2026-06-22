@@ -105,7 +105,7 @@ detect_env_vars = [
 ]
 
 [azure]
-disabled = false
+disabled = true
 style = "blue bold"
 symbol = "󰠅 "
 format = '[$symbol($subscription)]($style) '
