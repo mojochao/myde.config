@@ -71,3 +71,8 @@
 
 [include]
 	path = ~/.gitconfig
+
+# Use the personal SSH identity for repos under the mojochao (personal) org dir.
+# Work repos (e.g. lnw-sciplay) are unaffected and use ~/.ssh/config's default key.
+[includeIf "gitdir:~/devel/repos/github.com/mojochao/"]
+	path = ~/.config/git/personal.inc
