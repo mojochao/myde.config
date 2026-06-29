@@ -224,6 +224,9 @@ if status is-interactive
         alias repos repos-cli
     end
 
+    # 'cuz terraform is just way too much to type
+    alias tf terraform
+
     # NOTE: these are now installed locally
 
     # # Manage agent skills with skills CLI
