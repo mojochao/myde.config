@@ -76,6 +76,12 @@ if test -d $dotnet_bin_dir
     set DOTNET_ROOT (brew --prefix)/opt/dotnet/libexec
 end
 
+## LFE (Lisp Flavoured Erlang)
+set lfe_bin_dir /opt/lfe/bin
+if test -d $lfe_bin_dir
+    fish_add_path $lfe_bin_dir
+end
+
 # Commands to run only in interactive sessions
 if status is-interactive
 
