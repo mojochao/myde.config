@@ -69,6 +69,13 @@ if test -d $jetbrains_scripts_dir
     fish_add_path $jetbrains_scripts_dir
 end
 
+## .NET binaries
+set dotnet_bin_dir (brew --prefix)/opt/dotnet/bin
+if test -d $dotnet_bin_dir
+    fish_add_path $dotnet_bin_dir
+    set DOTNET_ROOT (brew --prefix)/opt/dotnet/libexec
+end
+
 # Commands to run only in interactive sessions
 if status is-interactive
 
