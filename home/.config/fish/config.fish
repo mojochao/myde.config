@@ -73,7 +73,11 @@ end
 set dotnet_bin_dir (brew --prefix)/opt/dotnet/bin
 if test -d $dotnet_bin_dir
     fish_add_path $dotnet_bin_dir
-    set DOTNET_ROOT (brew --prefix)/opt/dotnet/libexec
+    set -gx DOTNET_ROOT (brew --prefix)/opt/dotnet/libexec
+end
+set dotnet_tools_dir ~/.dotnet/tools
+if test -d $dotnet_tools_dir
+    fish_add_path $dotnet_tools_dir
 end
 
 ## LFE (Lisp Flavoured Erlang)
