@@ -62,3 +62,17 @@ Always run `make preview` before `make link` to check for conflicts.
 - `v` — bat
 - `l`, `la`, `ll`, `lla` — ls variants
 - `bms`, `bmd`, `bmg`, `bml`, `bmp` — bookmarks.fish bookmark management
+
+## Shell Parity (bash / zsh / fish / nushell)
+
+All four shells are kept consistent at the **config level** — the same PATH
+entries, env vars, tool inits (starship, zoxide, mise, atuin, fnox, fzf, gk,
+docker), and simple aliases — each expressed in that shell's own idiom.
+bash & zsh share `home/.aliases`; fish and nushell keep their own alias blocks.
+Homebrew prefix: macOS `/opt/homebrew`, Linux `/opt/linuxbrew`.
+
+Fish's **function library is fish-only by design**: the custom functions under
+`.config/fish/functions/` (git helpers `gwip`/`gbda`/`grt`/…, kubectl helpers
+`k`/`kt`/`kubectl-*`, and the `bf` bookmark system) have no bash/zsh/nu
+equivalent. As a result nushell lacks the `bms/bmd/…` bookmark aliases. Porting
+any of these to the other shells is a separate, deliberate effort.

@@ -43,8 +43,10 @@ $env.config = {
 
 # Editor
 alias e = emacsclient
-alias et = emacsclient -nw
-alias eg = emacsclient -cq
+alias et = emacsclient --no-wait --quiet --tty
+alias eg = emacsclient --no-wait --quiet
+alias edit = emacsclient -cq
+alias editt = emacsclient -cq -nw
 
 # Git
 alias g = git
@@ -84,8 +86,13 @@ alias repos = repos-cli
 alias mmdc = npx @mermaid-js/mermaid-cli
 alias paperclipai = npx paperclipai
 alias codeburn = npx codeburn
+alias qmd = npx @tobilu/qmd
 alias skilz = uvx skilz
 alias smolvm = uvx smolvm
+alias skillspector = uvx "https://github.com/NVIDIA/skillspector.git"
+
+# Terraform
+alias tf = terraform
 
 # --- Local overrides -----------------------------------------------------
 

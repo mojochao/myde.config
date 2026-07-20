@@ -6,7 +6,7 @@ typeset -U path
 # Homebrew
 case $(uname) in
     Darwin) _brew_prefix=/opt/homebrew ;;
-    Linux)  _brew_prefix=/home/linuxbrew/.linuxbrew ;;
+    Linux)  _brew_prefix=/opt/linuxbrew ;;
 esac
 [[ -d $_brew_prefix/bin ]] && path=($_brew_prefix/bin $path)
 unset _brew_prefix
@@ -38,3 +38,21 @@ if command -v ruby &>/dev/null; then
     [[ -d $_gem_bin ]] && path=($_gem_bin $path)
     unset _gem_bin
 fi
+
+# .NET binaries (needs brew in PATH first)
+if command -v brew &>/dev/null; then
+    _dotnet=$(brew --prefix)/opt/dotnet
+    if [[ -d $_dotnet/bin ]]; then
+        path=($_dotnet/bin $path)
+        export DOTNET_ROOT=$_dotnet/libexec
+    fi
+    unset _dotnet
+fi
+[[ -d $HOME/.dotnet/tools ]] && path=($HOME/.dotnet/tools $path)
+
+# LFE (Lisp Flavoured Erlang)
+[[ -d /opt/lfe/bin ]] && path=(/opt/lfe/bin $path)
+
+# Bun
+export BUN_INSTALL=$HOME/.bun
+[[ -d $BUN_INSTALL/bin ]] && path=($BUN_INSTALL/bin $path)

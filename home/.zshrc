@@ -77,6 +77,16 @@ if command -v gk &>/dev/null; then
     source <(gk completion zsh)
 fi
 
+# --- Docker completions -------------------------------------------------------
+
+if command -v docker &>/dev/null; then
+    source <(docker completion zsh)
+fi
+
+# --- Short git alias completion -----------------------------------------------
+
+command -v git &>/dev/null && compdef g=git
+
 # --- Aliases ------------------------------------------------------------------
 
 [[ -f $HOME/.aliases ]] && source $HOME/.aliases

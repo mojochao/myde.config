@@ -7,8 +7,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 [[ -d "$HOME/.local/bin" ]] && PATH="$HOME/.local/bin:$PATH"
 
 case "$(uname)" in
-    Linux)  [[ -d /home/linuxbrew/.linuxbrew/bin ]] && PATH="/home/linuxbrew/.linuxbrew/bin:$PATH" ;;
-    Darwin) [[ -d /opt/linuxbrew/bin ]]              && PATH="/opt/linuxbrew/bin:$PATH" ;;
+    Linux)  [[ -d /opt/linuxbrew/bin ]] && PATH="/opt/linuxbrew/bin:$PATH" ;;
+    Darwin) [[ -d /opt/homebrew/bin ]]  && PATH="/opt/homebrew/bin:$PATH" ;;
 esac
 
 [[ -d "$HOME/go/bin" ]]  && PATH="$HOME/go/bin:$PATH"
@@ -30,6 +30,37 @@ if command -v ruby &>/dev/null; then
     unset _gem_bin
 fi
 
+# .NET binaries (needs brew in PATH first)
+if command -v brew &>/dev/null; then
+    _dotnet="$(brew --prefix)/opt/dotnet"
+    if [[ -d "$_dotnet/bin" ]]; then
+        PATH="$_dotnet/bin:$PATH"
+        export DOTNET_ROOT="$_dotnet/libexec"
+    fi
+    unset _dotnet
+fi
+[[ -d "$HOME/.dotnet/tools" ]] && PATH="$HOME/.dotnet/tools:$PATH"
+
+# LFE (Lisp Flavoured Erlang)
+[[ -d /opt/lfe/bin ]] && PATH="/opt/lfe/bin:$PATH"
+
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+[[ -d "$BUN_INSTALL/bin" ]] && PATH="$BUN_INSTALL/bin:$PATH"
+
+# Deduplicate PATH, keeping first occurrence (bash has no `typeset -U`).
+# ponytail: assumes no glob chars in PATH entries (true for these dotfiles).
+_dedup_path() {
+    local dir out= IFS=:
+    for dir in $PATH; do
+        [[ -z $dir || :$out: == *:$dir:* ]] && continue
+        out=${out:+$out:}$dir
+    done
+    PATH=$out
+}
+_dedup_path
+unset -f _dedup_path
+
 export PATH
 
 # Silence macOS "default shell is now zsh" banner
@@ -37,6 +68,10 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Interactive-only from here
 [[ $- == *i* ]] || return
+
+# Editor
+export EDITOR='emacsclient -cq -nw'
+export VISUAL='emacsclient -cq'
 
 # Shared aliases
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
@@ -57,11 +92,40 @@ elif command -v brew &>/dev/null && [[ -r "$(brew --prefix)/etc/profile.d/bash_c
     source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 fi
 
+# Git completion + wire the `g` alias (Homebrew git ships none; use CLT/OS copy).
+for _gc in \
+    "$(brew --prefix 2>/dev/null)/etc/bash_completion.d/git-completion.bash" \
+    "$(xcode-select -p 2>/dev/null)/usr/share/git-core/git-completion.bash" \
+    /usr/share/bash-completion/completions/git \
+    /usr/share/git-core/contrib/completion/git-completion.bash; do
+    if [[ -r $_gc ]]; then
+        source "$_gc"
+        declare -F __git_complete &>/dev/null && __git_complete g git
+        break
+    fi
+done
+unset _gc
+
 # Mise — activates completions for managed runtimes
 command -v mise &>/dev/null && eval "$(mise activate bash)"
 
+# Directory jumping (zoxide)
+command -v zoxide &>/dev/null && eval "$(zoxide init bash)"
+
+# Secrets injection (fnox)
+if command -v fnox &>/dev/null; then
+    eval "$(fnox activate bash)"
+    alias fnox_activate='eval "$(fnox activate bash)"'
+fi
+
+# Fuzzy finder (fzf)
+command -v fzf &>/dev/null && eval "$(fzf --bash)"
+
 # GitKraken CLI completions
 command -v gk &>/dev/null && eval "$(gk completion bash 2>/dev/null)"
+
+# Docker completions
+command -v docker &>/dev/null && eval "$(docker completion bash)"
 
 # Starship prompt
 command -v starship &>/dev/null && eval "$(starship init bash)"

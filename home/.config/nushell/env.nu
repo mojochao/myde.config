@@ -16,7 +16,7 @@ def --env add-path [dir: string] {
 let brew_bin = if (sys host | get name) == "Darwin" {
     "/opt/homebrew/bin"
 } else {
-    "/home/linuxbrew/.linuxbrew/bin"
+    "/opt/linuxbrew/bin"
 }
 
 add-path $brew_bin
@@ -35,7 +35,27 @@ if (which ruby | is-not-empty) {
     add-path $"(ruby -e 'puts Gem.user_dir' | str trim)/bin"
 }
 
-# --- Editor --------------------------------------------------------------
+# .NET binaries + tools (needs brew)
+if (which brew | is-not-empty) {
+    let dotnet = $"(brew --prefix | str trim)/opt/dotnet"
+    if (($dotnet | path join "bin") | path exists) {
+        add-path ($dotnet | path join "bin")
+        $env.DOTNET_ROOT = ($dotnet | path join "libexec")
+    }
+}
+add-path "~/.dotnet/tools"
+
+# LFE (Lisp Flavoured Erlang)
+add-path "/opt/lfe/bin"
+
+# Bun
+$env.BUN_INSTALL = ($env.HOME | path join ".bun")
+add-path ($env.BUN_INSTALL | path join "bin")
+
+# --- Environment ---------------------------------------------------------
+
+# XDG base dirs — Nushell on macOS only reads ~/.config/nushell when this is set.
+$env.XDG_CONFIG_HOME = ($env.HOME | path join ".config")
 
 $env.EDITOR = "emacsclient -cq -nw"
 $env.VISUAL = "emacsclient -cq"
@@ -81,5 +101,19 @@ if (which atuin | is-not-empty) {
     let f = ($autoload | path join "atuin.nu")
     if not ($f | path exists) {
         atuin init nu | save -f $f
+    }
+}
+
+if (which fnox | is-not-empty) {
+    let f = ($autoload | path join "fnox.nu")
+    if not ($f | path exists) {
+        fnox activate nu | save -f $f
+    }
+}
+
+if (which gk | is-not-empty) {
+    let f = ($autoload | path join "gk.nu")
+    if not ($f | path exists) {
+        gk completion nushell | save -f $f
     }
 }

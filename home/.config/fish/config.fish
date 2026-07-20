@@ -21,9 +21,9 @@ end
 ## homebrew binaries installed with `brew install`
 switch (uname)
     case Linux
-        set brew_bin_dir /home/linuxbrew/.linuxbrew/bin
-    case Darwin
         set brew_bin_dir /opt/linuxbrew/bin
+    case Darwin
+        set brew_bin_dir /opt/homebrew/bin
 end
 if test -d $brew_bin_dir
     fish_add_path $brew_bin_dir
@@ -93,11 +93,16 @@ if status is-interactive
     set fish_greeting ''
 
     # Set emacs as my default text editor.
-    set -gx EDITOR 'TERM=xterm-256color emacsclient -cq -nw' # TUI
-    set -gx VISUAL 'emacsclient -cq' # GUI
+    set -gx EDITOR 'emacsclient --create-frame --quiet --tty' # TUI
+    set -gx VISUAL 'emacsclient --create-frame --quiet' # GUI
 
-    alias et $EDITOR # TUI
-    alias eg $VISUAL # GUI
+    # Edit with Emacs.
+    alias e emacsclient
+    alias eg 'emacsclient --no-wait --quiet'
+    alias et 'emacsclient --no-wait --quiet --tty'
+
+    alias edit $VISUAL # GUI
+    alias editt $EDITOR # TUI
 
     # Use starship for portable shell prompt.
     # docs: https://starship.rs/
@@ -177,10 +182,6 @@ if status is-interactive
     alias ta 'tree -a'
     alias td 'tree -L'
     alias tad 'tree -a -L'
-
-    # Edit with Emacs.
-    alias e emacsclient
-    alias et 'emacsclient -nw'
 
     # Open files with registered desktop app handler for OS.
     switch (uname)
