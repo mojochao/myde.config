@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# Control the Emacs daemon via launchd (macOS) or systemd (Linux).
+set -euo pipefail
+
+usage() {
+  echo "Usage: $(basename "$0") {start|stop|restart|status} [--verbose]" >&2
+  exit 1
+}
+
+[[ $# -ge 1 && $# -le 2 ]] || usage
+cmd=$1
+verbose=false
+if [[ $# -eq 2 ]]; then
+  [[ $2 == --verbose && $cmd == status ]] || usage
+  verbose=true
+fi
+
+case "$(uname -s)" in
+  Darwin)
+    label=gnu.emacs.daemon
+    plist=~/Library/LaunchAgents/$label.plist
+    case "$cmd" in
+      start)   launchctl bootstrap "gui/$(id -u)" "$plist" ;;
+      stop)    launchctl bootout "gui/$(id -u)/$label" ;;
+      restart) launchctl kickstart -k "gui/$(id -u)/$label" ;;
+      status)
+        if $verbose; then
+          launchctl print "gui/$(id -u)/$label"
+        elif launchctl list "$label" &>/dev/null; then
+          echo "running"
+        else
+          echo "stopped"
+        fi
+        ;;
+      *)       usage ;;
+    esac
+    ;;
+  Linux)
+    unit=emacs.service
+    case "$cmd" in
+      start)   systemctl --user start "$unit" ;;
+      stop)    systemctl --user stop "$unit" ;;
+      restart) systemctl --user restart "$unit" ;;
+      status)
+        if $verbose; then
+          systemctl --user status "$unit"
+        else
+          systemctl --user is-active "$unit"
+        fi
+        ;;
+      *)       usage ;;
+    esac
+    ;;
+  *)
+    echo "Unsupported OS: $(uname -s)" >&2
+    exit 1
+    ;;
+esac
