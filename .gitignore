@@ -12,3 +12,9 @@ tmp/
 
 # babysitter artifacts
 .a5c/
+
+# local fish config
+/home/.config/fish/local.config.fish
+
+# JetBrains IDEs
+.idea/
