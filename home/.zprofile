@@ -53,6 +53,9 @@ if command -v brew &>/dev/null; then
 fi
 [[ -d $HOME/.dotnet/tools ]] && path=($HOME/.dotnet/tools $path)
 
+# Superset CLI
+[[ -d $HOME/superset/bin ]] && path=($HOME/superset/bin $path)
+
 # LFE (Lisp Flavoured Erlang)
 [[ -d /opt/lfe/bin ]] && path=(/opt/lfe/bin $path)
 

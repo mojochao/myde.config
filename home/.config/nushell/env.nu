@@ -46,6 +46,9 @@ if (which brew | is-not-empty) {
 }
 add-path "~/.dotnet/tools"
 
+# Superset CLI
+add-path "~/superset/bin"
+
 # LFE (Lisp Flavoured Erlang)
 add-path "/opt/lfe/bin"
 

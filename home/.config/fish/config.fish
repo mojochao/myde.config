@@ -86,6 +86,12 @@ if test -d $dotnet_tools_dir
     fish_add_path $dotnet_tools_dir
 end
 
+## Superset CLI
+set superset_bin_dir $HOME/superset/bin
+if test -d $superset_bin_dir
+    fish_add_path $superset_bin_dir
+end
+
 ## LFE (Lisp Flavoured Erlang)
 set lfe_bin_dir /opt/lfe/bin
 if test -d $lfe_bin_dir
