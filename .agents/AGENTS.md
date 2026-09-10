@@ -34,17 +34,17 @@ Always run `make preview` before `make link` to check for conflicts.
 
 ## Key Tools in This Config
 
-| Tool | Role |
-|------|------|
-| Fish | Primary interactive shell |
-| Mise | Runtime version management |
-| Starship | Shell prompt |
-| Ghostty | Terminal emulator |
-| delta | Git diff pager |
-| zoxide | Directory jumping |
-| fzf | Fuzzy search (files, history) |
-| bat | Syntax-highlighted file viewer |
-| fnox | Secrets injection into env vars |
+| Tool     | Role                            |
+| -------- | ------------------------------- |
+| Fish     | Primary interactive shell       |
+| Mise     | Runtime version management      |
+| Starship | Shell prompt                    |
+| Ghostty  | Terminal emulator               |
+| delta    | Git diff pager                  |
+| zoxide   | Directory jumping               |
+| fzf      | Fuzzy search (files, history)   |
+| bat      | Syntax-highlighted file viewer  |
+| fnox     | Secrets injection into env vars |
 
 ## Notable Git Aliases (defined in `.config/git/`)
 
