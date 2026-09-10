@@ -24,6 +24,7 @@ add-path "~/bin"
 add-path "~/go/bin"
 add-path "~/.cargo/bin"
 add-path "~/.krew/bin"
+add-path "~/.docker/bin"
 add-path "~/.local/share/JetBrains/Toolbox/scripts"
 add-path "~/.local/bin"
 

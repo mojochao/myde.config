@@ -13,6 +13,7 @@ esac
 
 [[ -d "$HOME/go/bin" ]]  && PATH="$HOME/go/bin:$PATH"
 [[ -d "$HOME/.krew/bin" ]] && PATH="$HOME/.krew/bin:$PATH"
+[[ -d "$HOME/.docker/bin" ]] && PATH="$HOME/.docker/bin:$PATH"
 [[ -d "$HOME/.local/share/JetBrains/Toolbox/scripts" ]] && \
     PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
 

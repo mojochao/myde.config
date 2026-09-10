@@ -18,6 +18,9 @@ unset _brew_prefix
 # Go binaries installed with `go install`
 [[ -d $HOME/go/bin ]] && path=($HOME/go/bin $path)
 
+# Docker Desktop CLI binaries
+[[ -d $HOME/.docker/bin ]] && path=($HOME/.docker/bin $path)
+
 # Krew kubectl plugin binaries
 [[ -d $HOME/.krew/bin ]] && path=($HOME/.krew/bin $path)
 

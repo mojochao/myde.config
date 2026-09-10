@@ -63,6 +63,12 @@ if test -d $krew_bin_dir
     fish_add_path $krew_bin_dir
 end
 
+## Docker Desktop CLI binaries
+set docker_bin_dir $HOME/.docker/bin
+if test -d $docker_bin_dir
+    fish_add_path $docker_bin_dir
+end
+
 ## JetBrains IDE scripts installed by JetBrains Toolbox app
 set jetbrains_scripts_dir ~/.local/share/JetBrains/Toolbox/scripts
 if test -d $jetbrains_scripts_dir
