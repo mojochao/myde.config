@@ -91,6 +91,9 @@ alias skilz = uvx skilz
 alias smolvm = uvx smolvm
 alias skillspector = uvx "https://github.com/NVIDIA/skillspector.git"
 
+# Colorized kubectl output
+alias kubectl = kubecolor
+
 # Terraform
 alias tf = terraform
 

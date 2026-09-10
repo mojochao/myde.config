@@ -204,6 +204,12 @@ if status is-interactive
     # When git is just too much to type.
     alias g git
 
+    # Colorize kubectl output.
+    # repo: https://github.com/kubecolor/kubecolor
+    if command -q kubecolor
+        alias kubectl kubecolor
+    end
+
     # Mermaid diagrams CLI
     # docs: https://mermaid.js.org/
     # repo: https://github.com/mermaid-js/mermaid-cli
