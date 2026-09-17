@@ -256,6 +256,10 @@ if status is-interactive
     # 'cuz terraform is just way too much to type
     alias tf terraform
 
+    # open roamgate's (formerly known as herdr-studio) web ui, running as a service, in browser
+    # repo: https://github.com/powerfooI/roamgate
+    alias herdr-studio 'o http://localhost:8787'
+
     # NOTE: these are now installed locally
 
     # # Manage agent skills with skills CLI
