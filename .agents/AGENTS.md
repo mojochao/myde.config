@@ -26,7 +26,7 @@ Always run `make preview` before `make link` to check for conflicts.
   - `.config/git/` — Git config with delta pager, custom aliases, rerere, zdiff3
   - `.config/mise/` — Mise version manager config (experimental features enabled)
   - `.config/starship.toml` — Starship prompt (detects Python, Go, Node, Rust, Elixir, Erlang, AWS/GCP/Azure/K8s)
-  - `.config/ghostty/` — Ghostty terminal (Source Code Pro font, Catppuccin theme)
+  - `.config/ghostty/` — Ghostty terminal (`config.ghostty`; Source Code Pro with JetBrainsMono Nerd Font fallback, Catppuccin Frappe/Latte)
   - `.config/gh/` — GitHub CLI config
   - `.config/nushell/` — Nushell (secondary shell)
   - `.config/glow/` — Glow markdown viewer
@@ -55,9 +55,9 @@ Always run `make preview` before `make link` to check for conflicts.
 - `clog` — conventional commit log
 - `dunk` — diff via dunk (minified file diffing)
 
-## Fish Shell Aliases (defined in `.config/fish/conf.d/`)
+## Fish Shell Aliases (defined in `.config/fish/config.fish`)
 
-- `e` / `et` — emacsclient GUI / terminal
+- `e` / `eg` / `et` — emacsclient: waits / GUI, no wait / terminal frame
 - `g` — git
 - `v` — bat
 - `l`, `la`, `ll`, `lla` — ls variants
