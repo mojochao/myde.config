@@ -31,6 +31,7 @@ Always run `make preview` before `make link` to check for conflicts.
   - `.config/nushell/` — Nushell (secondary shell)
   - `.config/glow/` — Glow markdown viewer
   - `bin/` — Custom scripts (`myeditor` wraps `emacsclient -c -a emacs`; `gogh` installs terminal color themes)
+- `reference/` — config snapshots kept for reference only; **not stowed** (e.g. `herdr/config.toml`, which herdr and its plugins rewrite in place)
 
 ## Key Tools in This Config
 
