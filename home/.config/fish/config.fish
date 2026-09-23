@@ -111,7 +111,7 @@ if status is-interactive
     # Edit with Emacs.
     alias e emacsclient
     alias eg 'emacsclient --no-wait --quiet'
-    alias et 'emacsclient --no-wait --quiet --tty'
+    alias et 'emacsclient --quiet --tty'
 
     alias edit $VISUAL # GUI
     alias editt $EDITOR # TUI
